@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT $JAVA_OPTS -war target/oms-0.0.1.war
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/oms-0.0.1.jar
