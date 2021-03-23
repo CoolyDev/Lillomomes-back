@@ -14,7 +14,7 @@ public class OmsbackendApplication extends SpringBootServletInitializer {
 	@RequestMapping("/")
 	@ResponseBody
 	String home() {
-		return "Hello World!";
+		return "Hello World";
 	}
 
 	public static void main(String[] args) {
