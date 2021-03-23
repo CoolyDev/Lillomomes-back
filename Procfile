@@ -1,1 +1,1 @@
-web: java -Dserver.port=8400 $JAVA_OPTS -jar target/oms-0.0.1.jar
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/lib/*.jar
