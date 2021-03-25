@@ -7,15 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
 @SpringBootApplication
-public class OmsbackendApplication extends SpringBootServletInitializer {
-
-	@RequestMapping("/")
-	@ResponseBody
-	String home() {
-		return "Hello World";
-	}
+public class OmsbackendApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OmsbackendApplication.class, args);
