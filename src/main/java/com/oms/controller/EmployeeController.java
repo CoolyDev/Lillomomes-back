@@ -28,12 +28,6 @@ public class EmployeeController {
   private EmergencyContactsService emergencyContactsService;
 
   @Autowired
-  private SkillService skillService;
-
-  @Autowired
-  private InstitutionService institutionService;
-
-  @Autowired
   RoleService roleService;
 
   @Autowired
@@ -129,37 +123,6 @@ public class EmployeeController {
       }
       System.out.println(employee);
          employee.setRoles(roles);
-      Set<EmergencyContact> emergencyContacts1 = new HashSet<>();
-      if(!employeeRequest.getEmergencyContacts().isEmpty()){
-        employeeRequest.getEmergencyContacts().forEach(
-                emergencyContact -> {
-                  EmergencyContact ec= emergencyContactsService.saveEmergencyContact(emergencyContact);
-                  emergencyContacts1.add(ec);
-                }
-        );
-        employee.setEmergencyContacts(emergencyContacts1);
-      }
-
-      Set<Skill> skillSet = new HashSet<>();
-      if(!employeeRequest.getSkills().isEmpty()){
-        employeeRequest.getSkills().forEach(
-                skill -> {
-                  Skill sk= skillService.saveSkill(skill);
-                  skillSet.add(sk);
-                }
-        );
-        employee.setSkills(skillSet);
-      }
-      Set<Institution> institutionSet = new HashSet<>();
-      if(!employeeRequest.getInstitution().isEmpty()){
-        employeeRequest.getInstitution().forEach(
-                inst -> {
-                  Institution it= institutionService.saveInstitution(inst);
-                  institutionSet.add(it);
-                }
-        );
-        employee.setInstitutions(institutionSet);
-      }
         return employeeService.saveEmployee(employee);
     });
   }
@@ -317,29 +280,8 @@ public Employee createEmployee(@RequestBody CreationRequest creationRequest) {
               emergencyContacts1.add(ec);
             }
     );
-    userRegistered.setEmergencyContacts(emergencyContacts1);
   }
 
-  Set<Skill> skillSet = new HashSet<>();
-  if(!creationRequest.getSkills().isEmpty()){
-    creationRequest.getSkills().forEach(
-            skill -> {
-              Skill sk= skillService.saveSkill(skill);
-              skillSet.add(sk);
-            }
-    );
-    userRegistered.setSkills(skillSet);
-  }
-  Set<Institution> institutionSet = new HashSet<>();
-  if(!creationRequest.getInstitution().isEmpty()){
-    creationRequest.getInstitution().forEach(
-            inst -> {
-              Institution it= institutionService.saveInstitution(inst);
-              institutionSet.add(it);
-            }
-    );
-    employee.setInstitutions(institutionSet);
-  }
   employeeService.saveEmployee(userRegistered);
   return userRegistered;
 }

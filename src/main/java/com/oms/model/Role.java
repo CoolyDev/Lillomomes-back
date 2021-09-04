@@ -1,8 +1,11 @@
 package com.oms.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 @Entity
 @Table(name = "roles")
+@Data
 public class Role {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,7 +14,7 @@ public class Role {
   @Enumerated(EnumType.STRING)
   @Column(length = 20)
   private ERole name;
-
+/*
   public Role(Integer id, ERole name) {
     this.id = id;
     this.name = name;
@@ -34,6 +37,5 @@ public class Role {
 
   public void setName(ERole name) {
     this.name = name;
-  }
-
+  }*/
 }

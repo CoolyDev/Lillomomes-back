@@ -1,6 +1,5 @@
 package com.oms.service;
 
-import com.oms.model.PlannedCourse;
 import com.oms.model.Teachers;
 import com.oms.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;

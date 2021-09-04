@@ -24,9 +24,6 @@ public class StudentService {
   public void deleteStudent(Long code){
     studentRepository.deleteById(code);
   }
-  public Boolean existsByEmail (String email){
-    return studentRepository.existsByEmail(email);
-  }
   public Optional<Student> findStudentByCode(Long code){
     return studentRepository.findStudentByCode(code);
   }

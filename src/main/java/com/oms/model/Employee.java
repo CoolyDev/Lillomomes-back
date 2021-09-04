@@ -1,6 +1,5 @@
 package com.oms.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -93,36 +92,10 @@ public class Employee {
 	private String password;
 
   @ManyToMany(fetch = FetchType.LAZY)
-  @JoinTable(	name = "employee_roles",
+  @JoinTable(name = "employee_roles",
     joinColumns = @JoinColumn(name = "employee_id"),
     inverseJoinColumns = @JoinColumn(name = "role_id"))
   private Set<Role> roles = new HashSet<>();
-
-  @OneToMany( cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "employee")
-  private Set<Historique> historique = new HashSet<>();
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "employee_emmergency",
-			joinColumns = @JoinColumn(name = "employee_id"),
-			inverseJoinColumns = @JoinColumn(name = "emmergency_id"))
-	private Set<EmergencyContact> emergencyContacts = new HashSet<>();
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "employee_skill",
-			joinColumns = @JoinColumn(name = "employee_id"),
-			inverseJoinColumns = @JoinColumn(name = "skill_id"))
-	private Set<Skill> skills = new HashSet<>();
-
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "employee_institution",
-			joinColumns = @JoinColumn(name = "employee_id"),
-			inverseJoinColumns = @JoinColumn(name = "institution_id"))
-	private Set<Institution> institutions = new HashSet<>();
-
-	@OneToMany(mappedBy="employee")
-	@JsonIgnore
-	private Set<PlannedCourse> plannedCourse;
-
 	public Employee() {
 		super();
 	}
@@ -149,30 +122,6 @@ public class Employee {
 		this.jobType = jobType;
 		this.workLocation = workLocation;
 		this.password = password;
-	}
-
-	public Set<PlannedCourse> getPlannedCourse() {
-		return plannedCourse;
-	}
-
-	public void setPlannedCourse(Set<PlannedCourse> plannedCourse) {
-		this.plannedCourse = plannedCourse;
-	}
-
-	public Set<Institution> getInstitutions() {
-		return institutions;
-	}
-
-	public void setInstitutions(Set<Institution> institutions) {
-		this.institutions = institutions;
-	}
-
-	public Set<Skill> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(Set<Skill> skills) {
-		this.skills = skills;
 	}
 
 	public Long getId() {
@@ -292,14 +241,6 @@ public class Employee {
     this.department = department;
   }
 
-  public Set<Historique> getHistorique() {
-    return historique;
-  }
-
-  public void setHistorique(Set<Historique> historique) {
-    this.historique = historique;
-  }
-
 	public String getBirthday() {
 		return birthday;
 	}
@@ -378,14 +319,6 @@ public class Employee {
 
 	public void setJobType(String jobType) {
 		this.jobType = jobType;
-	}
-
-	public Set<EmergencyContact> getEmergencyContacts() {
-		return emergencyContacts;
-	}
-
-	public void setEmergencyContacts(Set<EmergencyContact> emergencyContacts) {
-		this.emergencyContacts = emergencyContacts;
 	}
 
 }

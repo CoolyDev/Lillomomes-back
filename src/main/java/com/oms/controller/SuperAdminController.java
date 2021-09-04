@@ -42,12 +42,6 @@ public class SuperAdminController {
   EmergencyContactsService emergencyContactsService;
 
   @Autowired
-  private SkillService skillService;
-
-  @Autowired
-  private InstitutionService institutionService;
-
-  @Autowired
   RoleService roleService;
 
   @Autowired
@@ -214,26 +208,6 @@ public class SuperAdminController {
                 emergencyContacts1.add(ec);
               }
       );
-      Set<Skill> skillSet = new HashSet<>();
-      if(!creationRequest.getSkills().isEmpty()){
-        creationRequest.getSkills().forEach(
-                skill -> {
-                  Skill sk= skillService.saveSkill(skill);
-                  skillSet.add(sk);
-                }
-        );
-        userRegistered.setSkills(skillSet);
-      }
-      Set<Institution> institutionSet = new HashSet<>();
-      if(!creationRequest.getInstitution().isEmpty()){
-        creationRequest.getInstitution().forEach(
-                inst -> {
-                  Institution it= institutionService.saveInstitution(inst);
-                  institutionSet.add(it);
-                }
-        );
-        userRegistered.setInstitutions(institutionSet);
-      }
     }
     employeeService.saveEmployee(userRegistered);
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
